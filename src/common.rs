@@ -1004,12 +1004,12 @@ fn get_api_server_(api: String, custom: String) -> String {
             return format!("http://{}", s);
         }
     }
-    "http://rdadmin.123cf.top".to_owned()
+    "http://jipv4.123cf.top:21114".to_owned()
 }
 
 #[inline]
 pub fn is_public(url: &str) -> bool {
-    url.contains("rustdesk.com")
+    url.contains("123cf.top")
 }
 
 pub fn get_udp_punch_enabled() -> bool {
