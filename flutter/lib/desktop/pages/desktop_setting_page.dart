@@ -1524,7 +1524,7 @@ class _NetworkState extends State<_Network> with AutomaticKeepAliveClientMixin {
     //     bind.mainGetBuildinOption(key: kOptionHideWebSocketSetting) == 'Y';
     final hideWebSocket = true;
 
-    if (hideServer && hideProxy && hideWebSocket) {
+    if (hideProxy && hideWebSocket) {
       return Offstage();
     }
 
@@ -1597,7 +1597,7 @@ class _NetworkState extends State<_Network> with AutomaticKeepAliveClientMixin {
                   title: 'ID/Relay Server',
                   onTap: () => showServerSettings(gFFI.dialogManager),
                 ),
-              if (!hideServer && (!hideProxy || !hideWebSocket))
+              if ((!hideProxy || !hideWebSocket))
                 Divider(height: 1, indent: 16, endIndent: 16),
               if (!hideProxy)
                 listTile(
