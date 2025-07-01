@@ -1162,7 +1162,12 @@ class _FileTransferLogPage extends StatefulWidget {
 class __FileTransferLogPageState extends State<_FileTransferLogPage> {
   @override
   Widget build(BuildContext context) {
-    return statusList();
+    // return statusList();
+    // 隐藏页面
+    return Offstage(
+      offstage: true,
+      child: statusList(),
+    );
   }
 
   Widget generateCard(Widget child) {
