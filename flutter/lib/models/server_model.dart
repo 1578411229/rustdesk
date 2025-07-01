@@ -34,7 +34,7 @@ class ServerModel with ChangeNotifier {
   bool _showElevation = false;
   bool hideCm = false;
   int _connectStatus = 0; // Rendezvous Server status
-  String _verificationMethod = "";
+  String _verificationMethod = "use-permanent-password";
   String _temporaryPasswordLength = "";
   bool _allowNumericOneTimePassword = false;
   String _approveMode = "";
@@ -74,7 +74,7 @@ class ServerModel with ChangeNotifier {
       kUseBothPasswords
     ].indexOf(_verificationMethod);
     if (index < 0) {
-      return kUsePermanentPassword;
+      return kUseBothPasswords;
     }
     return _verificationMethod;
   }
