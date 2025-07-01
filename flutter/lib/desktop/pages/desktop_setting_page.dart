@@ -1598,7 +1598,7 @@ class _NetworkState extends State<_Network> with AutomaticKeepAliveClientMixin {
                   title: 'ID/Relay Server',
                   onTap: () => showServerSettings(gFFI.dialogManager),
                 ),
-              if ((!hideProxy || !hideWebSocket))
+              if (false) //(!hideProxy || !hideWebSocket)
                 Divider(height: 1, indent: 16, endIndent: 16),
               if (!hideProxy)
                 listTile(
