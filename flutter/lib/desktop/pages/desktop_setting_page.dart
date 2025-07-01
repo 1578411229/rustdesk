@@ -1592,7 +1592,7 @@ class _NetworkState extends State<_Network> with AutomaticKeepAliveClientMixin {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (!hideServer)
+              if (false)//!hideServer
                 listTile(
                   icon: Icons.dns_outlined,
                   title: 'ID/Relay Server',
