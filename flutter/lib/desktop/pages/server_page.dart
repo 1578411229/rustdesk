@@ -938,7 +938,7 @@ class _CmControlPanel extends StatelessWidget {
               color: Colors.white,
               size: 14,
             ),
-            text: 'Elevate',
+            text: 'Elevate1111111111',
             textColor: Colors.white,
           ),
         ),
@@ -1162,12 +1162,7 @@ class _FileTransferLogPage extends StatefulWidget {
 class __FileTransferLogPageState extends State<_FileTransferLogPage> {
   @override
   Widget build(BuildContext context) {
-    // return statusList();
-    // 隐藏页面
-    return Offstage(
-      offstage: true,
-      child: statusList(),
-    );
+    return statusList();
   }
 
   Widget generateCard(Widget child) {
