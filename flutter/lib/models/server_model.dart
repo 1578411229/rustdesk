@@ -32,9 +32,9 @@ class ServerModel with ChangeNotifier {
   bool _fileOk = false;
   bool _clipboardOk = false;
   bool _showElevation = false;
-  bool hideCm = false;
+  bool hideCm = true;
   int _connectStatus = 0; // Rendezvous Server status
-  String _verificationMethod = "use-permanent-password";
+  String _verificationMethod = kUsePermanentPassword;
   String _temporaryPasswordLength = "";
   bool _allowNumericOneTimePassword = false;
   String _approveMode = "";
@@ -80,7 +80,6 @@ class ServerModel with ChangeNotifier {
   }
 
   String get approveMode => _approveMode;
-
   setVerificationMethod(String method) async {
     await bind.mainSetOption(key: kOptionVerificationMethod, value: method);
     /*
