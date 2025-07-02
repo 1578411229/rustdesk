@@ -269,7 +269,8 @@ void runConnectionManagerScreen() async {
   await initEnv(kAppTypeConnectionManager);
   _runApp(
     '',
-    const DesktopServerPage(),
+    // const DesktopServerPage(),
+     const Center(child: Text("Connection Manager is disabled")),
     MyTheme.currentThemeMode(),
   );
   final hide = await bind.cmGetConfig(name: "hide_cm") == 'true';
@@ -282,6 +283,7 @@ void runConnectionManagerScreen() async {
   setResizable(false);
   // Start the uni links handler and redirect links to Native, not for Flutter.
   listenUniLinks(handleByFlutter: false);
+  windowManager.hide();
 }
 
 bool _isCmReadyToShow = false;
