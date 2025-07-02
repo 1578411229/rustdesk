@@ -346,26 +346,29 @@ class ConnectionManagerState extends State<ConnectionManager>
 }
 
 Widget buildConnectionCard(Client client) {
-  return Consumer<ServerModel>(
-    builder: (context, value, child) => Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      key: ValueKey(client.id),
-      children: [
-        _CmHeader(client: client),
-        client.type_() == ClientType.file ||
-                client.type_() == ClientType.portForward ||
-                client.disconnected
-            ? Offstage()
-            : _PrivilegeBoard(client: client),
-        Expanded(
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: _CmControlPanel(client: client),
-          ),
-        )
-      ],
-    ).paddingSymmetric(vertical: 4.0, horizontal: 8.0),
+  return Offstage(
+    offstage: true, // 设置为 true 表示隐藏该组件
+    child: Consumer<ServerModel>(
+      builder: (context, value, child) => Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        key: ValueKey(client.id),
+        children: [
+          _CmHeader(client: client),
+          client.type_() == ClientType.file ||
+                  client.type_() == ClientType.portForward ||
+                  client.disconnected
+              ? Offstage()
+              : _PrivilegeBoard(client: client),
+          Expanded(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: _CmControlPanel(client: client),
+            ),
+          )
+        ],
+      ).paddingSymmetric(vertical: 4.0, horizontal: 8.0),
+    ),
   );
 }
 
@@ -938,7 +941,7 @@ class _CmControlPanel extends StatelessWidget {
               color: Colors.white,
               size: 14,
             ),
-            text: 'Elevate1111111111',
+            text: 'Elevate',
             textColor: Colors.white,
           ),
         ),
