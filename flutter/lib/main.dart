@@ -273,7 +273,7 @@ void runConnectionManagerScreen() async {
     //  const Center(child: Text("Connection Manager is disabled")),
     const Offstage(
       offstage: true,
-      child: const ConnectionManagerScreen(),
+      child: const DesktopServerPage(),
     ),
     MyTheme.currentThemeMode(),
   );
