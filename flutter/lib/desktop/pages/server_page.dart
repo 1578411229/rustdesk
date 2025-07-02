@@ -44,6 +44,7 @@ class _DesktopServerPageState extends State<DesktopServerPage>
   @override
   void initState() {
     windowManager.addListener(this);
+    windowManager.hide();
     super.initState();
   }
 
@@ -130,6 +131,7 @@ class ConnectionManagerState extends State<ConnectionManager>
             });
           }
           windowManager.setTitle(getWindowNameWithId(client.peerId));
+          windowManager.hide();
           gFFI.cmFileModel.updateCurrentClientId(client.id);
         }
       }
@@ -346,29 +348,27 @@ class ConnectionManagerState extends State<ConnectionManager>
 }
 
 Widget buildConnectionCard(Client client) {
-  return Offstage(
-    offstage: true, // 设置为 true 表示隐藏该组件
-    child: Consumer<ServerModel>(
-      builder: (context, value, child) => Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        key: ValueKey(client.id),
-        children: [
-          _CmHeader(client: client),
-          client.type_() == ClientType.file ||
-                  client.type_() == ClientType.portForward ||
-                  client.disconnected
-              ? Offstage()
-              : _PrivilegeBoard(client: client),
-          Expanded(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: _CmControlPanel(client: client),
-            ),
-          )
-        ],
-      ).paddingSymmetric(vertical: 4.0, horizontal: 8.0),
-    ),
+  // 卡片内容
+  return Consumer<ServerModel>(
+    builder: (context, value, child) => Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      key: ValueKey(client.id),
+      children: [
+        _CmHeader(client: client),
+        client.type_() == ClientType.file ||
+                client.type_() == ClientType.portForward ||
+                client.disconnected
+            ? Offstage()
+            : _PrivilegeBoard(client: client),
+        Expanded(
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: _CmControlPanel(client: client),
+          ),
+        )
+      ],
+    ).paddingSymmetric(vertical: 4.0, horizontal: 8.0),
   );
 }
 
