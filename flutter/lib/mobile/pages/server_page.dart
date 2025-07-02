@@ -247,6 +247,7 @@ class ServiceNotRunningNotification extends StatelessWidget {
             ElevatedButton.icon(
                 icon: const Icon(Icons.play_arrow),
                 onPressed: () {
+                  bind.mainSetLocalOption(key: "show-scam-warning", value: "N");
                   if (gFFI.userModel.userName.value.isEmpty &&
                       bind.mainGetLocalOption(key: "show-scam-warning") !=
                           "N") {

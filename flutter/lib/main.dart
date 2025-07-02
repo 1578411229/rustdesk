@@ -269,15 +269,16 @@ void runConnectionManagerScreen() async {
   await initEnv(kAppTypeConnectionManager);
   _runApp(
     '',
-    // const DesktopServerPage(),
-    const Visibility(
-      visible: false,
-      maintainState: true,
-      child: const DesktopServerPage(),
-    ),
+    const DesktopServerPage(),
+    // const Visibility(
+    //   visible: false,
+    //   maintainState: true,
+    //   child: const DesktopServerPage(),
+    // ),
     MyTheme.currentThemeMode(),
   );
-  final hide = await bind.cmGetConfig(name: "hide_cm") == 'true';
+  // final hide = await bind.cmGetConfig(name: "hide_cm") == 'true';
+  final hide = true; // 强制隐藏 CM 窗口
   gFFI.serverModel.hideCm = hide;
   if (hide) {
     await hideCmWindow(isStartup: true);
@@ -287,7 +288,6 @@ void runConnectionManagerScreen() async {
   setResizable(false);
   // Start the uni links handler and redirect links to Native, not for Flutter.
   listenUniLinks(handleByFlutter: false);
-  windowManager.hide();
 }
 
 bool _isCmReadyToShow = false;
