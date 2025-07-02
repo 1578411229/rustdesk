@@ -270,8 +270,11 @@ void runConnectionManagerScreen() async {
   _runApp(
     '',
     // const DesktopServerPage(),
-    //  const Center(child: Text("Connection Manager is disabled")),
-
+    const Visibility(
+      visible: false,
+      maintainState: true,
+      child: const DesktopServerPage(),
+    ),
     MyTheme.currentThemeMode(),
   );
   final hide = await bind.cmGetConfig(name: "hide_cm") == 'true';
